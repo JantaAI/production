@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+// Using img tags directly to match design
 import { ArrowRight } from 'lucide-react';
 // Activation is handled through API route
 
@@ -75,11 +75,9 @@ export function OnboardingE({ activationCode, onComplete }: OnboardingEProps) {
     <div className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#f9f8f6]">
       {/* Logo */}
       <div className="absolute left-[35px] top-[4px] z-10">
-        <Image
+        <img
           alt="JANTA"
           src="/assets/1764ad722a3a27350e171a5285220c9a91f02b7d.png"
-          width={200}
-          height={70}
           className="h-[70px] w-auto object-contain"
         />
       </div>
@@ -95,11 +93,9 @@ export function OnboardingE({ activationCode, onComplete }: OnboardingEProps) {
         <div className="flex gap-12 mb-12">
           <div className="flex flex-col items-center">
             <div className="size-[120px] mb-4">
-              <Image
+              <img
                 alt=""
                 src="/assets/dd840bf9e199bcaea7f2aac3d9fa3577ef4fab7d.png"
-                width={120}
-                height={120}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -123,11 +119,9 @@ export function OnboardingE({ activationCode, onComplete }: OnboardingEProps) {
           </div>
           <div className="flex flex-col items-center">
             <div className="size-[120px] mb-4">
-              <Image
+              <img
                 alt=""
                 src="/assets/2b69ec7ca389ed9a098afe24ed912776a66a79a3.png"
-                width={120}
-                height={120}
                 className="w-full h-full object-contain"
               />
             </div>

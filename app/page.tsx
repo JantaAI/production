@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+// Using img tags directly to match design
 import { supabase } from '@/lib/supabase';
 import { useChat } from '@/lib/hooks/useChat';
 import { useSupport } from '@/lib/hooks/useSupport';
@@ -347,11 +347,9 @@ export default function Home() {
         }}
         className="absolute left-[16px] top-[4px] z-10 cursor-pointer"
       >
-        <Image
+        <img
           alt="JANTA"
           src="/assets/1764ad722a3a27350e171a5285220c9a91f02b7d.png"
-          width={200}
-          height={70}
           className="h-[70px] w-auto object-contain"
         />
       </button>
@@ -366,11 +364,9 @@ export default function Home() {
               className="bg-[#482b22] border-[#282828] border-[0.45px] border-solid rounded-[12px] h-[36px] px-[18px] flex items-center gap-3 shadow-[0px_0px_6px_0px_rgba(0,0,0,0.3)] cursor-pointer"
             >
               <div className="relative size-[13.5px]">
-                <Image
+                <img
                   alt=""
                   src="/assets/5917bfa10402943b0f061dd2b5e720d71c67964c.png"
-                  width={13.5}
-                  height={13.5}
                   className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                 />
               </div>
@@ -633,11 +629,9 @@ export default function Home() {
                         onClick={() => document.getElementById('file-upload-main')?.click()}
                         className="relative size-[18px] cursor-pointer"
                       >
-                        <Image
+                        <img
                           alt=""
                           src="/assets/9a5091bd34b099cbaf8b3472262c94f94f367473.png"
-                          width={18}
-                          height={18}
                           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                         />
                       </button>
@@ -655,11 +649,9 @@ export default function Home() {
                           onClick={() => setIsRecording(!isRecording)}
                           className="relative size-[25.5px] cursor-pointer"
                         >
-                          <Image
+                          <img
                             alt=""
                             src="/assets/31a0f845575e402d8be6aa2c923016e0a606f09f.png"
-                            width={25.5}
-                            height={25.5}
                             className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                           />
                         </button>
@@ -676,11 +668,9 @@ export default function Home() {
                         className="relative bg-[#f9f8f6] rounded-[31.5px] size-[36px] flex items-center justify-center cursor-pointer text-[#f9f8f6] disabled:opacity-50"
                       >
                         <div className="relative size-[16px] rotate-90">
-                          <Image
+                          <img
                             alt=""
                             src="/assets/7ade6729c509000e9c9ec39030c32dacae42e0bb.png"
-                            width={16}
-                            height={16}
                             className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                           />
                         </div>
@@ -794,11 +784,9 @@ export default function Home() {
                       onClick={() => document.getElementById('file-upload-cs')?.click()}
                       className="relative size-[18px] cursor-pointer"
                     >
-                      <Image
+                      <img
                         alt=""
                         src="/assets/9a5091bd34b099cbaf8b3472262c94f94f367473.png"
-                        width={18}
-                        height={18}
                         className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                       />
                     </button>
@@ -815,11 +803,9 @@ export default function Home() {
                       onClick={() => setIsRecording(!isRecording)}
                       className={`relative size-[25.5px] cursor-pointer ${isRecording ? 'hidden' : ''}`}
                     >
-                      <Image
+                      <img
                         alt=""
                         src="/assets/31a0f845575e402d8be6aa2c923016e0a606f09f.png"
-                        width={25.5}
-                        height={25.5}
                         className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                       />
                     </button>
@@ -835,11 +821,9 @@ export default function Home() {
                       className="relative bg-[#f9f8f6] rounded-[31.5px] size-[25.5px] flex items-center justify-center cursor-pointer disabled:opacity-50"
                     >
                       <div className="relative size-[10.5px] rotate-90">
-                        <Image
+                        <img
                           alt=""
                           src="/assets/7ade6729c509000e9c9ec39030c32dacae42e0bb.png"
-                          width={10.5}
-                          height={10.5}
                           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                         />
                       </div>
@@ -865,11 +849,9 @@ export default function Home() {
                     }`}
                   >
                     <div className="relative size-[13.5px]">
-                      <Image
+                      <img
                         alt=""
                         src="/assets/46768b18ab068fb9bc1afac1f2178cd51000d120.png"
-                        width={13.5}
-                        height={13.5}
                         className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                       />
                     </div>
@@ -889,11 +871,9 @@ export default function Home() {
                     }`}
                   >
                     <div className="relative size-[13.5px]">
-                      <Image
+                      <img
                         alt=""
                         src="/assets/7ade6729c509000e9c9ec39030c32dacae42e0bb.png"
-                        width={13.5}
-                        height={13.5}
                         className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                       />
                     </div>

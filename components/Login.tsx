@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import Image from 'next/image';
+// Using img tags directly to match design
 
 interface LoginProps {
   onBack: () => void;
@@ -46,11 +46,9 @@ export default function Login({ onBack, onLogin }: LoginProps) {
     <div className="bg-[#f9f8f6] relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* JANTA Logo - top left, foreground */}
       <div className="absolute left-[16px] top-[4px] z-10">
-        <Image
+        <img
           alt="JANTA"
           src="/assets/1764ad722a3a27350e171a5285220c9a91f02b7d.png"
-          width={200}
-          height={70}
           className="h-[70px] w-auto object-contain cursor-pointer"
           onClick={onBack}
         />
