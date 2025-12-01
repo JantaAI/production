@@ -61,7 +61,7 @@ export function OnboardingECode({ onComplete }: OnboardingECodeProps) {
           {uniqueCode.map((char, index) => (
             <input
               key={index}
-              ref={(el) => (inputRefs.current[index] = el)}
+              ref={(el) => { inputRefs.current[index] = el; }}
               type="text"
               value={char}
               onChange={(e) => handleCodeChange(index, e.target.value)}
