@@ -77,7 +77,7 @@ export function OnboardingE({ activationCode, onComplete }: OnboardingEProps) {
       <div className="absolute left-[35px] top-[4px] z-10">
         <img
           alt="JANTA"
-          src="/assets/1764ad722a3a27350e171a5285220c9a91f02b7d.png"
+          src="/assets/Logo Janta.png"
           className="h-[70px] w-auto object-contain"
         />
       </div>
@@ -95,7 +95,7 @@ export function OnboardingE({ activationCode, onComplete }: OnboardingEProps) {
             <div className="size-[120px] mb-4">
               <img
                 alt=""
-                src="/assets/dd840bf9e199bcaea7f2aac3d9fa3577ef4fab7d.png"
+                src="/assets/consultation (1).png"
                 className="w-full h-full object-contain"
               />
             </div>
@@ -107,7 +107,7 @@ export function OnboardingE({ activationCode, onComplete }: OnboardingEProps) {
             <div className="size-[120px] mb-4">
               <img
                 alt=""
-                src="/assets/92b99631b24eeef4603dfbb5b1f6206a04a63b44.png"
+                src="/assets/doctor (1).png"
                 className="w-full h-full object-contain"
               />
             </div>
@@ -119,7 +119,7 @@ export function OnboardingE({ activationCode, onComplete }: OnboardingEProps) {
             <div className="size-[120px] mb-4">
               <img
                 alt=""
-                src="/assets/2b69ec7ca389ed9a098afe24ed912776a66a79a3.png"
+                src="/assets/report (1).png"
                 className="w-full h-full object-contain"
               />
             </div>

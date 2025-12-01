@@ -44,7 +44,7 @@ export function OnboardingF({ onComplete }: OnboardingFProps) {
       <div className="absolute left-[35px] top-[4px] z-10">
         <img
           alt="JANTA"
-          src="/assets/1764ad722a3a27350e171a5285220c9a91f02b7d.png"
+          src="/assets/Logo Janta.png"
           className="h-[70px] w-auto object-contain"
         />
       </div>

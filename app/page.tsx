@@ -30,7 +30,7 @@ export default function Home() {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<{ name: string; icon: string }>({
     name: 'AI Doctor',
-    icon: '/assets/46768b18ab068fb9bc1afac1f2178cd51000d120.png',
+    icon: '/assets/46768b18ab068fb9bc1afac1f2178cd51000d120.png', // Keep existing AI Doctor icon
   });
   const [isChatMode, setIsChatMode] = useState(false);
   const [isWalletView, setIsWalletView] = useState(false);
@@ -349,7 +349,7 @@ export default function Home() {
       >
         <img
           alt="JANTA"
-          src="/assets/1764ad722a3a27350e171a5285220c9a91f02b7d.png"
+          src="/assets/Logo Janta.png"
           className="h-[70px] w-auto object-contain"
         />
       </button>
@@ -629,7 +629,7 @@ export default function Home() {
                       >
                         <img
                           alt=""
-                          src="/assets/9a5091bd34b099cbaf8b3472262c94f94f367473.png"
+                          src="/assets/clip.png"
                           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                         />
                       </button>
@@ -649,7 +649,7 @@ export default function Home() {
                         >
                           <img
                             alt=""
-                            src="/assets/31a0f845575e402d8be6aa2c923016e0a606f09f.png"
+                            src="/assets/mic (4).png"
                             className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                           />
                         </button>
@@ -668,7 +668,7 @@ export default function Home() {
                         <div className="relative size-[16px] rotate-90">
                           <img
                             alt=""
-                            src="/assets/7ade6729c509000e9c9ec39030c32dacae42e0bb.png"
+                            src="/assets/arrow.png"
                             className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                           />
                         </div>
@@ -784,7 +784,7 @@ export default function Home() {
                     >
                       <img
                         alt=""
-                        src="/assets/9a5091bd34b099cbaf8b3472262c94f94f367473.png"
+                        src="/assets/clip.png"
                         className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                       />
                     </button>
@@ -803,7 +803,7 @@ export default function Home() {
                     >
                       <img
                         alt=""
-                        src="/assets/31a0f845575e402d8be6aa2c923016e0a606f09f.png"
+                        src="/assets/mic (4).png"
                         className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                       />
                     </button>
@@ -821,7 +821,7 @@ export default function Home() {
                       <div className="relative size-[10.5px] rotate-90">
                         <img
                           alt=""
-                          src="/assets/7ade6729c509000e9c9ec39030c32dacae42e0bb.png"
+                          src="/assets/arrow.png"
                           className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                         />
                       </div>
@@ -861,7 +861,7 @@ export default function Home() {
                   {/* General Health */}
                   <button
                     onClick={() => {
-                      handleSelectOption('General Health', '/assets/7ade6729c509000e9c9ec39030c32dacae42e0bb.png');
+                      handleSelectOption('General Health', '/assets/arrow.png');
                       setIsMenuOpen(false);
                     }}
                     className={`w-full flex items-center gap-2 px-[12px] py-[6px] rounded-b-[6px] ${
@@ -871,7 +871,7 @@ export default function Home() {
                     <div className="relative size-[13.5px]">
                       <img
                         alt=""
-                        src="/assets/7ade6729c509000e9c9ec39030c32dacae42e0bb.png"
+                        src="/assets/arrow.png"
                         className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                       />
                     </div>
