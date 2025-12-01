@@ -105,11 +105,9 @@ export function OnboardingE({ activationCode, onComplete }: OnboardingEProps) {
           </div>
           <div className="flex flex-col items-center">
             <div className="size-[120px] mb-4">
-              <Image
+              <img
                 alt=""
                 src="/assets/92b99631b24eeef4603dfbb5b1f6206a04a63b44.png"
-                width={120}
-                height={120}
                 className="w-full h-full object-contain"
               />
             </div>
