@@ -1,0 +1,4 @@
+# Ignore design files from Vercel builds
+designs/
+*.plan.md
+plans/

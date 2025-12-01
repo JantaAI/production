@@ -12,7 +12,12 @@ export async function requestSupport(): Promise<RequestSupportResponse> {
     throw new Error('Not authenticated');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/support-call`, {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!supabaseUrl) {
+    throw new Error('Supabase URL not configured');
+  }
+
+  const response = await fetch(`${supabaseUrl}/functions/v1/support-call`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${session.access_token}`,

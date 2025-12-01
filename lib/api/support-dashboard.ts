@@ -34,7 +34,19 @@ export interface ChatHistory {
 
 const getServiceRoleKey = () => {
   // This should only be called server-side
-  return process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!key) {
+    throw new Error('SUPABASE_SERVICE_ROLE_KEY is not configured');
+  }
+  return key;
+};
+
+const getSupabaseUrl = () => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!url) {
+    throw new Error('NEXT_PUBLIC_SUPABASE_URL is not configured');
+  }
+  return url;
 };
 
 export async function getSupportRequests(): Promise<SupportRequest[]> {
@@ -43,7 +55,7 @@ export async function getSupportRequests(): Promise<SupportRequest[]> {
     throw new Error('Service role key not configured');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/support_requests?select=*&order=requested_at.desc`, {
+  const response = await fetch(`${getSupabaseUrl()}/rest/v1/support_requests?select=*&order=requested_at.desc`, {
     headers: {
       'Authorization': `Bearer ${serviceRoleKey}`,
       'apikey': serviceRoleKey,
@@ -63,7 +75,7 @@ export async function getSupportRequest(requestId: string): Promise<SupportReque
     throw new Error('Service role key not configured');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/support_requests?id=eq.${requestId}&select=*`, {
+  const response = await fetch(`${getSupabaseUrl()}/rest/v1/support_requests?id=eq.${requestId}&select=*`, {
     headers: {
       'Authorization': `Bearer ${serviceRoleKey}`,
       'apikey': serviceRoleKey,
@@ -84,7 +96,7 @@ export async function getUserChatHistory(userId: string): Promise<ChatHistory> {
     throw new Error('Service role key not configured');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/get-user-chat-history?user_id=${userId}`, {
+  const response = await fetch(`${getSupabaseUrl()}/functions/v1/get-user-chat-history?user_id=${userId}`, {
     headers: {
       'Authorization': `Bearer ${serviceRoleKey}`,
     },
@@ -109,7 +121,7 @@ export async function updateSupportRequestStatus(
     throw new Error('Service role key not configured');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/update-support-status`, {
+  const response = await fetch(`${getSupabaseUrl()}/functions/v1/update-support-status`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${serviceRoleKey}`,
@@ -141,7 +153,7 @@ export async function updateSupportRequestNotes(
     throw new Error('Service role key not configured');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/update-support-status`, {
+  const response = await fetch(`${getSupabaseUrl()}/functions/v1/update-support-status`, {
     method: 'PATCH',
     headers: {
       'Authorization': `Bearer ${serviceRoleKey}`,
@@ -171,7 +183,7 @@ export async function assignSupportRequest(
     throw new Error('Service role key not configured');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/update-support-status`, {
+  const response = await fetch(`${getSupabaseUrl()}/functions/v1/update-support-status`, {
     method: 'PATCH',
     headers: {
       'Authorization': `Bearer ${serviceRoleKey}`,

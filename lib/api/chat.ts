@@ -11,7 +11,12 @@ export async function sendChatMessage(request: SendChatMessageRequest) {
     throw new Error('Not authenticated');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/chat-entrypoint`, {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!supabaseUrl) {
+    throw new Error('Supabase URL not configured');
+  }
+
+  const response = await fetch(`${supabaseUrl}/functions/v1/chat-entrypoint`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${session.access_token}`,

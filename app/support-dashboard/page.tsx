@@ -1,16 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  getSupportRequests,
-  getSupportRequest,
-  getUserChatHistory,
-  updateSupportRequestStatus,
-  updateSupportRequestNotes,
-  assignSupportRequest,
-  type SupportRequest,
-  type ChatHistory,
-} from '@/lib/api/support-dashboard';
+import type { SupportRequest, ChatHistory } from '@/lib/api/support-dashboard';
 
 export default function SupportDashboard() {
   const [requests, setRequests] = useState<SupportRequest[]>([]);
@@ -36,7 +27,9 @@ export default function SupportDashboard() {
 
   const loadRequests = async () => {
     try {
-      const data = await getSupportRequests();
+      const response = await fetch('/api/support/requests');
+      if (!response.ok) throw new Error('Failed to fetch requests');
+      const data = await response.json();
       setRequests(data);
     } catch (error) {
       console.error('Failed to load requests:', error);
@@ -47,7 +40,9 @@ export default function SupportDashboard() {
 
   const loadChatHistory = async (userId: string) => {
     try {
-      const history = await getUserChatHistory(userId);
+      const response = await fetch(`/api/support/chat-history?user_id=${userId}`);
+      if (!response.ok) throw new Error('Failed to fetch chat history');
+      const history = await response.json();
       setChatHistory(history);
     } catch (error) {
       console.error('Failed to load chat history:', error);
@@ -58,10 +53,24 @@ export default function SupportDashboard() {
     if (!selectedRequest) return;
 
     try {
-      await updateSupportRequestStatus(selectedRequest.id, newStatus, statusMessage, 'Support Agent');
+      const response = await fetch('/api/support/update-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          request_id: selectedRequest.id,
+          current_status: newStatus,
+          status_message: statusMessage,
+          agent_name: 'Support Agent',
+        }),
+      });
+      if (!response.ok) throw new Error('Failed to update status');
+      
       await loadRequests();
-      const updated = await getSupportRequest(selectedRequest.id);
-      setSelectedRequest(updated);
+      const updatedResponse = await fetch(`/api/support/request?id=${selectedRequest.id}`);
+      if (updatedResponse.ok) {
+        const updated = await updatedResponse.json();
+        setSelectedRequest(updated);
+      }
     } catch (error) {
       console.error('Failed to update status:', error);
     }
@@ -71,10 +80,23 @@ export default function SupportDashboard() {
     if (!selectedRequest) return;
 
     try {
-      await updateSupportRequestNotes(selectedRequest.id, internalNotes, customerNotes);
+      const response = await fetch('/api/support/update-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          request_id: selectedRequest.id,
+          internal_notes: internalNotes,
+          customer_notes: customerNotes,
+        }),
+      });
+      if (!response.ok) throw new Error('Failed to save notes');
+      
       await loadRequests();
-      const updated = await getSupportRequest(selectedRequest.id);
-      setSelectedRequest(updated);
+      const updatedResponse = await fetch(`/api/support/request?id=${selectedRequest.id}`);
+      if (updatedResponse.ok) {
+        const updated = await updatedResponse.json();
+        setSelectedRequest(updated);
+      }
     } catch (error) {
       console.error('Failed to save notes:', error);
     }
@@ -84,10 +106,22 @@ export default function SupportDashboard() {
     if (!selectedRequest) return;
 
     try {
-      await assignSupportRequest(selectedRequest.id, assignedTo);
+      const response = await fetch('/api/support/update-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          request_id: selectedRequest.id,
+          assigned_to: assignedTo,
+        }),
+      });
+      if (!response.ok) throw new Error('Failed to assign');
+      
       await loadRequests();
-      const updated = await getSupportRequest(selectedRequest.id);
-      setSelectedRequest(updated);
+      const updatedResponse = await fetch(`/api/support/request?id=${selectedRequest.id}`);
+      if (updatedResponse.ok) {
+        const updated = await updatedResponse.json();
+        setSelectedRequest(updated);
+      }
     } catch (error) {
       console.error('Failed to assign:', error);
     }

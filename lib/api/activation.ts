@@ -16,13 +16,20 @@ export interface ActivateUserRequest {
   city?: string;
 }
 
+// NOTE: This function should only be called server-side (from API routes)
+// For client-side usage, create an API route that calls this function
 export async function generateActivationCode(request: GenerateActivationCodeRequest) {
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!serviceRoleKey) {
     throw new Error('Service role key not configured');
   }
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/generate-activation-code`, {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!supabaseUrl) {
+    throw new Error('Supabase URL not configured');
+  }
+
+  const response = await fetch(`${supabaseUrl}/functions/v1/generate-activation-code`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${serviceRoleKey}`,
@@ -39,8 +46,15 @@ export async function generateActivationCode(request: GenerateActivationCodeRequ
   return response.json();
 }
 
+// NOTE: This function should only be called server-side (from API routes)
+// For client-side usage, use the /api/activate route
 export async function activateUser(request: ActivateUserRequest) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/activate-user`, {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!supabaseUrl) {
+    throw new Error('Supabase URL not configured');
+  }
+
+  const response = await fetch(`${supabaseUrl}/functions/v1/activate-user`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -55,8 +69,9 @@ export async function activateUser(request: ActivateUserRequest) {
 
   const data = await response.json();
   
-  // Set session in Supabase client
-  if (data.session) {
+  // Set session in Supabase client (only works client-side)
+  // In server-side context, return the session data
+  if (typeof window !== 'undefined' && data.session) {
     await supabase.auth.setSession(data.session);
   }
 
