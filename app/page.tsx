@@ -383,11 +383,9 @@ export default function Home() {
               className="bg-[#482b22] border-[#282828] border-[0.45px] border-solid rounded-[12px] h-[36px] px-[18px] flex items-center gap-3 shadow-[0px_0px_6px_0px_rgba(0,0,0,0.3)] cursor-pointer"
             >
               <div className="relative size-[13.5px]">
-                <Image
+                <img
                   alt=""
                   src="/assets/8b1caddc21d7d46f00aa0b4011a3a282207caaf5.png"
-                  width={13.5}
-                  height={13.5}
                   className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
                 />
               </div>
